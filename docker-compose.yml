@@ -1,0 +1,74 @@
+services:
+  fuseki:
+    container_name: fuseki
+    hostname: fuseki
+    image: stain/jena-fuseki:5.1.0
+    environment:
+      - ADMIN_PASSWORD=admin
+      - JAVA_OPTIONS=-Xmx2g -Xms1g
+    ports:
+      - ${FUSEKI_PORT:-9030}:3030
+    volumes:
+      - fuseki-data:/fuseki
+    networks:
+      - traefik
+    user: 'fuseki:fuseki'
+
+  fuseki-cache:
+    hostname: fuseki-cache
+    container_name: fuseki-cache
+    image: varnish
+    ports:
+      - ${CACHE_PORT:-9031}:80
+    volumes:
+      - type: bind
+        source: ./config/varnish-default.vcl
+        target: /etc/varnish/default.vcl
+    networks:
+      - traefik
+
+  skosmos:
+    container_name: skosmos
+    image: ${IMAGE:-ghcr.io/knaw-huc/sd-skosmos:v2.18.1-1.6.0}
+    environment:
+      - ADMIN_PASSWORD=$ADMIN_PASSWORD
+      - SPARQL_ENDPOINT=http://fuseki-cache:80/skosmos/sparql
+      - DATA=${DATA:-/data}
+    networks:
+      - traefik
+    ports:
+      - '9090:80' #adapt as needed on portainer
+    volumes:
+      - gl-skosmos:/data
+      - skosmos-configuration:/config
+    depends_on:
+      - fuseki
+      - skosmos-loader
+  skosmos-loader:
+    container_name: skosmos-loader
+    image: ghcr.io/knaw-huc/sd-skosmos-loader:v2.18.1-1.6.0
+    environment:
+      - ADMIN_PASSWORD=$ADMIN_PASSWORD
+      - SPARQL_ENDPOINT=http://fuseki-cache:80/skosmos/sparql
+      - STORE_BASE=http://fuseki-cache:80/skosmos
+      - DATA=${DATA:-/data}
+      - DATABASE_TYPE=fuseki
+    networks:
+      - traefik
+    volumes:
+      - gl-skosmos:/data
+      - skosmos-configuration:/config
+    depends_on:
+      - fuseki
+
+networks:
+  traefik:
+    external: true
+
+volumes:
+  gl-skosmos:
+    external: true
+  skosmos-configuration:
+    external: false
+  fuseki-data:
+    name: fuseki-data
