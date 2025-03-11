@@ -4,7 +4,7 @@ services:
     hostname: fuseki
     image: stain/jena-fuseki:5.1.0
     environment:
-      - ADMIN_PASSWORD=admin
+      - ADMIN_PASSWORD=$ADMIN_PASSWORD
       - JAVA_OPTIONS=-Xmx2g -Xms1g
     ports:
       - ${FUSEKI_PORT:-9030}:3030
