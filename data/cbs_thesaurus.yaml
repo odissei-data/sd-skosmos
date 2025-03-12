@@ -1,0 +1,8 @@
+
+config:
+  type: file
+  location: cbs_thesaurus.config
+
+source:
+  type: file
+  location: cbs_thesaurus.ttl

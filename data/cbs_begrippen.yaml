@@ -1,0 +1,8 @@
+
+config:
+  type: file
+  location: cbs_begrippen.config
+
+source:
+  type: file
+  location: cbs_begrippen.ttl

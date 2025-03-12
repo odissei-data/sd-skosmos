@@ -3,5 +3,5 @@ config:
   location: elsst.config
 
 source:
-  type: fetch
-  location: https://thesauri.cessda.eu/rest/v1/elsst-5/data?format=text/turtle
+  type: file
+  location: elsst.ttl

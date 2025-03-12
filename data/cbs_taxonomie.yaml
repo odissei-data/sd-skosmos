@@ -1,0 +1,8 @@
+
+config:
+  type: file
+  location: cbs_taxonomie.config
+
+source:
+  type: file
+  location: cbs_taxonomie.ttl

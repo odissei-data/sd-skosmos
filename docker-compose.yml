@@ -32,14 +32,14 @@ services:
     image: ${IMAGE:-ghcr.io/knaw-huc/sd-skosmos:v2.18.1-1.6.0}
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
-      - SPARQL_ENDPOINT=http://fuseki-cache:80/skosmos/sparql
+      - SPARQL_ENDPOINT=http://fuseki:3030/skosmos/sparql
       - DATA=${DATA:-/data}
     networks:
       - traefik
     ports:
       - '9090:80' #adapt as needed on portainer
     volumes:
-      - gl-skosmos:/data
+      - ./data:/data
       - skosmos-configuration:/config
     depends_on:
       - fuseki
@@ -49,14 +49,14 @@ services:
     image: ghcr.io/knaw-huc/sd-skosmos-loader:v2.18.1-1.6.0
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
-      - SPARQL_ENDPOINT=http://fuseki-cache:80/skosmos/sparql
-      - STORE_BASE=http://fuseki-cache:80/skosmos
+      - SPARQL_ENDPOINT=http://fuseki:3030/skosmos/sparql
+      - STORE_BASE=http://fuseki:3030/skosmos
       - DATA=${DATA:-/data}
       - DATABASE_TYPE=fuseki
     networks:
       - traefik
     volumes:
-      - gl-skosmos:/data
+      - ./data:/data
       - skosmos-configuration:/config
     depends_on:
       - fuseki
