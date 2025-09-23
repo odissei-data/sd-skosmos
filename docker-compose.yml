@@ -29,7 +29,7 @@ services:
 
   skosmos:
     container_name: skosmos
-    image: ${IMAGE:-ghcr.io/knaw-huc/sd-skosmos:v2.18.1-1.6.0}
+    image: ${IMAGE:-ghcr.io/knaw-huc/sd-skosmos:v2.18.1-1.8.0}
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
       - SPARQL_ENDPOINT=http://fuseki:3030/skosmos/sparql
@@ -46,7 +46,7 @@ services:
       - skosmos-loader
   skosmos-loader:
     container_name: skosmos-loader
-    image: ghcr.io/knaw-huc/sd-skosmos-loader:v2.18.1-1.6.0
+    image: ghcr.io/knaw-huc/sd-skosmos-loader:v2.18.1-1.8.0
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
       - SPARQL_ENDPOINT=http://fuseki:3030/skosmos/sparql
@@ -60,6 +60,7 @@ services:
       - skosmos-configuration:/config
     depends_on:
       - fuseki
+      - fuseki-cache
 
 networks:
   traefik:
