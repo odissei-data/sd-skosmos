@@ -2,6 +2,7 @@ services:
   fuseki:
     container_name: fuseki
     hostname: fuseki
+    restart: unless-stopped
     image: stain/jena-fuseki:5.1.0
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
@@ -17,6 +18,7 @@ services:
   fuseki-cache:
     hostname: fuseki-cache
     container_name: fuseki-cache
+    restart: unless-stopped
     image: varnish
     ports:
       - ${CACHE_PORT:-9031}:80
@@ -29,6 +31,7 @@ services:
 
   skosmos:
     container_name: skosmos
+    restart: unless-stopped
     image: ${IMAGE:-ghcr.io/knaw-huc/sd-skosmos:v2.18.1-1.8.0}
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
@@ -46,6 +49,7 @@ services:
       - skosmos-loader
   skosmos-loader:
     container_name: skosmos-loader
+    restart: unless-stopped
     image: ghcr.io/knaw-huc/sd-skosmos-loader:v2.18.1-1.8.0
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
