@@ -32,7 +32,7 @@ services:
   skosmos:
     container_name: skosmos
     restart: unless-stopped
-    image: ${IMAGE:-ghcr.io/odissei-data/sd-skosmos-fork:v3.4-php8.2.35@sha256:439f5880daeae76f19598bd572ba87a035193e8de0f86cb0ada9086aba4bb339}
+    image: ${IMAGE:-ghcr.io/odissei-data/sd-skosmos-fork:v3.4-php8.2.35-1@sha256:1941993c3eb713535105fe459a88829d63422d714a8bebff0eb961c06e6e1e1e}
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
       - SPARQL_ENDPOINT=http://fuseki:3030/skosmos/sparql
