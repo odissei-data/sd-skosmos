@@ -32,7 +32,7 @@ services:
   skosmos:
     container_name: skosmos
     restart: unless-stopped
-    image: ${IMAGE:-ghcr.io/knaw-huc/sd-skosmos:v2.18.1-1.8.0}
+    image: ${IMAGE:-ghcr.io/odissei-data/sd-skosmos-fork:v3.4-php8.2.35@sha256:439f5880daeae76f19598bd572ba87a035193e8de0f86cb0ada9086aba4bb339}
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
       - SPARQL_ENDPOINT=http://fuseki:3030/skosmos/sparql
@@ -50,7 +50,7 @@ services:
   skosmos-loader:
     container_name: skosmos-loader
     restart: unless-stopped
-    image: ghcr.io/knaw-huc/sd-skosmos-loader:v2.18.1-1.8.0
+    image: ghcr.io/odissei-data/sd-skosmos-fork-loader:v3.4-php8.2.35@sha256:dc077769430b8881e6ad60305d2a3f61d7873728c19abbdffb5fda700844ad18
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
       - SPARQL_ENDPOINT=http://fuseki:3030/skosmos/sparql
