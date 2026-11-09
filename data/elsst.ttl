@@ -14,8 +14,7 @@ owl:priorVersion rdfs:label "Has previous version"@en .
 
 <https://elsst.cessda.eu/id/5/> a owl:Ontology, skos:ConceptScheme;
   owl:imports <http://purl.org/dc/terms/>, <http://rdf-vocabulary.ddialliance.org/xkos>;
-  owl:versionInfo "5"@cs, "5"@de, "5"@el, "5"@en, "5"@es, "5"@fi, "5"@fr, "5"@hu, "5"@is,
-    "5"@lt, "5"@nl, "5"@no, "5"@ro, "5"@sl, "5"@sv;
+  owl:versionInfo "5";
   owl:priorVersion <https://elsst.cessda.eu/id/4/>;
   dct:description "The European Language Social Science Thesaurus (ELSST) is a broad-based, multilingual thesaurus for the social sciences. It is owned and published by the Consortium of European Social Science Data Archives (CESSDA) and its national Service Providers. The thesaurus consists of over 3,400 concepts and covers the core social science disciplines: politics, sociology, economics, education, law, crime, demography, health, employment, information and communication technology, and environmental science."@en;
   skos:hasTopConcept :000e1113-ffda-4088-8278-020b6dc71e20, :021d37a0-15c4-4d20-b051-94e9440403bd,
