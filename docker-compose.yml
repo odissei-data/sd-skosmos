@@ -3,7 +3,8 @@ services:
     container_name: fuseki
     hostname: fuseki
     restart: unless-stopped
-    image: stain/jena-fuseki:5.1.0
+    image: sd-skosmos-fuseki:5.6.0
+    build: ./fuseki
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
       - JAVA_OPTIONS=-Xmx2g -Xms1g
