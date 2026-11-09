@@ -2,6 +2,8 @@
 config:
   type: file
   location: cbs_begrippen.config
+  refresh: true
+  refreshFile: /data/cbs_begrippen.refresh
 
 source:
   type: file

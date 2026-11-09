@@ -2,6 +2,8 @@
 config:
   type: file
   location: cbs_taxonomie.config
+  refresh: true
+  refreshFile: /data/cbs_taxonomie.refresh
 
 source:
   type: file

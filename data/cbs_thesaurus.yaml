@@ -2,6 +2,8 @@
 config:
   type: file
   location: cbs_thesaurus.config
+  refresh: true
+  refreshFile: /data/cbs_thesaurus.refresh
 
 source:
   type: file

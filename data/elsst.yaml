@@ -1,6 +1,8 @@
 config:
   type: file
   location: elsst.config
+  refresh: true
+  refreshFile: /data/elsst.refresh
 
 source:
   type: file
