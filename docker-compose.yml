@@ -51,7 +51,7 @@ services:
   skosmos-loader:
     container_name: skosmos-loader
     restart: unless-stopped
-    image: ghcr.io/odissei-data/sd-skosmos-fork-loader:v3.4-php8.2.35@sha256:dc077769430b8881e6ad60305d2a3f61d7873728c19abbdffb5fda700844ad18
+    image: ghcr.io/odissei-data/sd-skosmos-fork-loader:v3.4-php8.2.35-1@sha256:ada0ce9e1ba622db39a9fb11a9100cfed63cfd22fe61ad0a469e0203cc98c598
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
       - SPARQL_ENDPOINT=http://fuseki:3030/skosmos/sparql
