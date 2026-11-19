@@ -3,7 +3,7 @@ services:
     container_name: fuseki
     hostname: fuseki
     restart: unless-stopped
-    image: sd-skosmos-fuseki:5.6.0
+    image: ghcr.io/odissei-data/sd-skosmos-fuseki:v1.0.0
     build: ./fuseki
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWORD
